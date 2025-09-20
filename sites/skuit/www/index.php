@@ -1,3 +1,3 @@
 <?
-require_once './lab1/hello_php.php';
+include_once './lab2/hello_lab2.php';
 ?>

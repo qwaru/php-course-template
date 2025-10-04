@@ -1,9 +1,10 @@
 <?php
 $name = "Ваше имя";
-$age = Ваш возраст;
-$heightCm = Ваш рост в см;
+$age = 18;
+$heightCm = 180;
 $isStudent = true;
 $grades = [4, 5, 3, 5, 4];
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>

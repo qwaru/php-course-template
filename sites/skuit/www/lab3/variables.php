@@ -66,7 +66,7 @@ $grades = [4, 5, 3, 5, 4];
         <div class="hint">// рост в см / 100 = <?= round($heightMeters, 2) ?></div>
 
         <p>Средний балл: <span class="result"><?= round($averageGrade, 2) ?></span></p>
-        <div class="hint">// array_sum($grades) / count($grades) = <?= round(SaverageGrade, 2) ?></div>
+        <div class="hint">// array_sum($grades) / count($grades) = <?= round($averageGrade, 2) ?></div>
     </div>
 
     <div class="section">
@@ -74,8 +74,8 @@ $grades = [4, 5, 3, 5, 4];
     <?php
     $greeting = "Привет, " . $name . "!";
     $agelnfo = "Тебе $age лет";
-    $upperName = strtoupper($name);
-    $nameLength = strlen($name);
+    $upperName = mb_strtoupper($name);
+    $nameLength = mb_strlen($name);
     ?>
 
     <p>Приветствие: <span class="result"><?= $greeting ?></span></p>
@@ -98,7 +98,7 @@ $grades = [4, 5, 3, 5, 4];
     $minGrade = min($grades);
     ?>
 
-    <p>Количество оценок: <span class="result"><?= $gradescount ?></span></p>
+    <p>Количество оценок: <span class="result"><?= $gradesCount ?></span></p>
     <div class="hint">// count($grades) - количество элементов массива</div>
 
     <p>Максимальная оценка: <span class="result"><?= $maxGrade ?></span></p>
@@ -111,14 +111,14 @@ $grades = [4, 5, 3, 5, 4];
     <div class="section">
     <h2>5. Случайные числа</h2>
     <?php
-    $randomlnt = rand(1, 100);
+    $randomlnt = rand(0, 100);
     $randomFloat = round(rand(0, 100) / 100, 2);
     ?>
 
     <p>Случайное целое: <span class="result"><?= $randomlnt ?></span></p>
     <div class="hint">// rand(1, 100) - случайное число от 1 до 100</div>
     
-    <p>Случайное дробное: <span class="result"><?= $randomFIoat ?></span></p>
+    <p>Случайное дробное: <span class="result"><?= $randomFloat ?></span></p>
     <div class="hint">// rand(0, 100) / 100 - случайное число от 0 до 1</div>
     </div>
 

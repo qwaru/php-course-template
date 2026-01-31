@@ -1,31 +1,18 @@
 <?php
-$books = [
-    [
-        "name" => "Тихий Дон",
-        "author" => "Михаил Шолохов",
-        "year" => 1928
-    ],
-    [
-        "name" => "Война и мир",
-        "author" => "Лев Толстой",
-        "year" => 1869
-    ],
-    [
-        "name" => "1984",
-        "author" => "Джордж Оруэлл",
-        "year" => 1949
-    ]
-];
+$jsonFile = __DIR__ . '/books_storage.json' ;
+
+if (!file_exists($jsonFile)) {
+    die("Файл books_storage.json не найден!");
+}
+$jsonData = file_get_contents($jsonFile);
+
+$books = json_decode($jsonData, true);
+
+if ($books === null) {
+    die("Ошибка при чтении JSON: " . json_last_error_msg());
+}
 ?>
 
-<h1>Главная страница каталога</h1>
-
-<?php foreach ($books as $book): ?>
-    <h2><?php echo $book['name']; ?></h2>
-    <p><strong>Автор:</strong> <?php echo $book['author']; ?></p>
-    <p><strong>Год издания:</strong> <?php echo $book['year']; ?></p>
-    <hr>
-<?php endforeach; ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -84,6 +71,7 @@ $books = [
             border: 0;
             border-top: 1px solid #ccc;
             margin: 15px 0;
+        }
     </style>
 </head>
 <body>
@@ -94,7 +82,7 @@ $books = [
 <h1>Список книг</h1>
 <?php foreach ($books as $book): ?>
     <h2>
-    <a href="<?php echo $book['link']; ?>"><?php echo $book['name']; ?></a>
+    <a href="book_detail.php?id=<?php echo $book['id']; ?>"><?php echo $book['name']; ?></a>
     </h2>
     <p><strong>Автор:</strong> <?php echo $book['author']; ?></p>
     <p><strong>Год издания:</strong> <?php echo $book['year']; ?></p>
